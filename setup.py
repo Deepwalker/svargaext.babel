@@ -3,7 +3,7 @@
 import os
 from setuptools import setup, find_packages
 
-import svargaext.babel
+#import svargaext.babel
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -13,13 +13,13 @@ setup(
     description = 'babel module for Svarga framework',
     long_description = read('README'),
     license = 'BSD',
-    version = svargaext.babel.__version__,
-    author = svargaext.babel.__author__,
-    author_email = svargaext.babel.__email__,
+    version = '0.1',
+    author = 'Mihail Krivushin',
+    author_email = 'krivushinme@gmail.com',
     url = '',
     packages = find_packages(),
     namespace_packages = ['svargaext'],
-    install_requires = ['svarga'],
+    install_requires = ['svarga', 'babel'],
     classifiers = [
         'Environment :: Web Environment',
         'Framework :: Svarga',
