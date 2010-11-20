@@ -15,12 +15,13 @@ class LazyString(object):
         object.__setattr__(self, '_value', None)
 
     def value(self):
-        if self._value is None:
+        if self._value:
+            return self._value
+        else:
             value = self._func(*self._args, **self._kwargs)
             if not self._lazy_hyper:
                 object.__setattr__(self, '_value', value)
             return value
-        return self._value
 
     value = property(value)
 
@@ -87,8 +88,8 @@ class LazyString(object):
     def __delattr__(self, name):
         delattr(self.value, name)
 
-    def __getattr__(self, name):
-        return getattr(self.value, name)
+#    def __getattr__(self, name):
+#        return getattr(self.value, name)
 
     def __setattr__(self, name, value):
         setattr(self.value, name, value)

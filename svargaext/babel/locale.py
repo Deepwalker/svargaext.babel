@@ -36,8 +36,12 @@ class Babel(object):
         if locale:
             return locale
 
-        accept = env.request.accept_languages.values()
-        locale = [l for l in accept if l in Babel.locales]
+        locale = []
+        for l in env.request.accept_languages.values():
+            if l in Babel.locales:
+                locale.append(l)
+            elif l[:2] in Babel.locales:
+                locale.append(l[:2])
         return locale[0] if locale else None
 
 
